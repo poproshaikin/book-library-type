@@ -1,0 +1,47 @@
+.nav-menu {
+    background-color: lightslategray;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.nav-menu ul {
+    height: 60px;
+
+    margin-right: 100px;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.nav-menu h1 {
+    margin-right: 650px;
+    font-size: 30px;
+    color: white;
+}
+
+.nav-menu h1:hover {
+    cursor: default;
+}
+
+.nav-menu li {
+    list-style: none;
+
+    margin-right: 50px;
+
+    font-size: 29px;
+    color: white;
+
+    cursor: pointer;
+}
+
+.nav-menu li:hover {
+    font-weight: bold;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: white;
+}

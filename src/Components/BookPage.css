@@ -1,0 +1,84 @@
+.loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:500px;
+}
+.title-row {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+.book-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+.left-panel {
+    width: 50%;
+    text-align: justify;
+    padding-left: 25px;
+}
+.description {
+    width: 50%;
+    font-size: 24px;
+}
+.property {
+    width: 50%;
+    height: auto;
+    font-size: 24px;
+}
+.right-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 25px;
+}
+.uploaded-by-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.user {
+    width: 75%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+.buttons-container button {
+    height: 50px;
+    width: 50px;
+    border: 0;
+    background-color: white;
+    font-size: 28px;
+}
+.buttons-container button:hover {
+    background-color: white;
+    border: 0;
+    font-size:30px;
+}
+.buttons-container button:active {
+    font-size: 28px;
+}
+.button-and-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.button-and-text + .button-and-text {
+    margin-left: 20px;
+}

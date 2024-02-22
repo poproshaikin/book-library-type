@@ -1,0 +1,31 @@
+.modal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+
+    background-color: rgb(240, 240, 240);
+    border: rgb(220, 220, 220) 1px solid;
+    border-radius: 3px;
+    width: 100px;
+    height: 200px;
+}
+.modal-content {
+    height: inherit;
+    width: inherit;
+
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+.modal-title-container {
+    margin-top: 10px;
+}
+.modal-links-container {
+    width: inherit;
+    height: 100px;
+}
+.modal-links-container p {
+
+}
