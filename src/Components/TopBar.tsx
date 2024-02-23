@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./TopBar.css"
-import OptionsModal from "./OptionsModal";
+import OptionsModal from "./OptionsModal"
 
 function TopBar() {
 
@@ -20,20 +20,24 @@ function TopBar() {
 
     return (
         <div>
-            <nav className="nav-menu">
-                <h1>Book Library</h1>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/signUp">Sign up</a></li>
+            <div className="nav-menu">
+                <div className="nav-title-container">
+                    <h1>Book Library</h1>
+                </div>
+                <div className="nav-constant-buttons">
+                    <p><a href="/">Home</a></p>
+                    <p><a href="/login">Login</a></p>
+                    <p><a href="/signUp">Sign up</a></p>
+                </div>
+                <div className="nav-optional-buttons">
                     {isAuthorized() && (
                         <div>
-                            <li><a onClick={toggleModal}>⋮</a></li>
+                            <img className="profile-logo" alt="profile" src="user.png" onClick={toggleModal}/>
                             <OptionsModal showModal={showModal} onClose={toggleModal}/>
                         </div>
                     )}
-                </ul>
-            </nav>
+                </div>
+            </div>
         </div>
     );
 }

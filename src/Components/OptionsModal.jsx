@@ -11,10 +11,10 @@ function OptionsModal({showModal, onClose}) {
                             <h4>Your account</h4>
                         </div>
                         <br/>
-                        <div className="modal-links container">
+                        <div className="modal-links-container">
                             <a href="/profile">· Profile</a>
-                            <p>· Add book</p>
-                            <p>· Sign out</p>
+                            <a href="/newBook">· Add book</a>
+                            <a>· Sign out</a>
                         </div>
 
                         {/*<button onClick={onClose}>Close</button>*/}

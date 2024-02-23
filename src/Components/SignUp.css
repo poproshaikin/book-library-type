@@ -27,8 +27,10 @@
     font-size: 30px;
     width: 350px;
     border: 0;
+    border-radius: 5px;
     border-bottom: 1px solid black;
     transition: color, background-color 0.2s ease;
+    font-family: Raleway;
 }
 .input + .input {
     padding-top: 25px;
@@ -37,14 +39,11 @@
     outline: none;
 }
 .input:hover {
-    background-color: lightslategray;
+    background-color: rgb(220, 220, 220);
 }
-.input::placeholder {
+::placeholder {
     font-family: Raleway;
     color:lightslategray;
-}
-.input::placeholder:hover {
-    font-family: Raleway;
 }
 .confirm-button {
     margin-top: 50px;

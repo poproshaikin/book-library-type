@@ -1,22 +1,24 @@
 import ConnectionHandler from "../Models/ConnectionHandler";
 import {serverIp, serverPort} from "../App";
 import "./ProfilePage.css"
+import {useState} from "react";
+import User from "../Models/User";
 
 function ProfilePage() {
 
     let connHandler = new ConnectionHandler(serverIp, serverPort);
 
-    connHandler.getUserByToken(sessionStorage['jwt'])
-        .then(value => {
-
-            if(value !== null) {
-                sessionStorage['user'] = JSON.stringify(value);
-            }
-        });
-
-    let user = JSON.parse(sessionStorage['user']);
+    const [user, setUser] = useState(undefined);
 
     if(user === undefined) {
+
+        connHandler.getUserByToken(sessionStorage['jwt'])
+            .then(value => {
+
+                if(value !== null) {
+                    setUser(value)
+                }
+            });
 
         return (
             <div>

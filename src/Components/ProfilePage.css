@@ -37,14 +37,20 @@
 .profile-button {
     height: 75px;
     width: 300px;
-    border: rgb(220, 220, 220) 1px solid;
+    border: rgb(220, 220, 220) 2px solid;
     border-radius: 5px;
     background-color: white;
-    transition: background-color 0.2s ease;
+    transition: border, background-color 0.2s ease;
     color: black;
     font-size: 20px;
+    font-family: Raleway;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 .profile-button:hover {
     background-color: lightslategray;
+    border: rgb(180,180,180) 2px solid;
     color: white;
+}
+.profile-button:active {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }

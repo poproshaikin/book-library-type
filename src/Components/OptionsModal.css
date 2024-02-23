@@ -13,19 +13,26 @@
 .modal-content {
     height: inherit;
     width: inherit;
-
     display: flex;
     align-items: center;
-
     flex-direction: column;
 }
 .modal-title-container {
     margin-top: 10px;
+    font-size: 1vw;
 }
 .modal-links-container {
     width: inherit;
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
 }
-.modal-links-container p {
-
+.modal-links-container a {
+    color: black;
+    text-decoration: none;
+}
+.modal-links-container a:hover {
+    color: black;
+    font-weight: bold;
 }

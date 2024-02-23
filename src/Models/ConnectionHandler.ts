@@ -133,7 +133,29 @@ class ConnectionHandler {
         } catch {
             return null;
         }
+    }
 
+    public async addNewBook(book:Book) {
+        const url=`http:${this.ServerIp}:${this.ServerPort}/books/addNewBook`;
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${sessionStorage['jwt']}`
+            },
+            body: JSON.stringify(book)
+        };
+
+        let responseText;
+
+        try {
+            const response = await fetch(url, options);
+            responseText = await response.text();
+        } catch {
+            responseText = 'Failed'
+        }
+
+        return responseText;
     }
 
     public static sha256(input:string) {
