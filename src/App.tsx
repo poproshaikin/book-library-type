@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {TopBar} from "./Components/TopBar";
 import {Home} from "./Components/Home";
@@ -9,15 +9,15 @@ import ProfilePage from "./Components/ProfilePage";
 import NewBookPage from "./Components/NewBookPage";
 import NotFound from "./Components/NotFound";
 
-const serverIp: string = '10.0.0.24';
+const serverIp: string = '10.0.1.126';
 const serverPort: number = 5238;
 
 function App() {
 
-    const [seed, setSeed] = useState(0);
+    const [reloadState, setReloadState] = useState<boolean>(false);
 
     function reload() {
-        setSeed(seed + 1);
+        setReloadState(!reloadState);
     }
 
     return (
@@ -27,7 +27,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login reloadTopBar={reload}/>} />
             <Route path="/signup" element={<SignUp reloadTopBar={reload}/>} />
-            <Route path="/book/:id" element={<BookPage reloadBookPage={reload}/>} />
+            <Route path="/book/:id" element={<BookPage reloadBookPage={reload}/> } />
             <Route path="/profile" element={<ProfilePage/>} />
             <Route path="/newBook" element={<NewBookPage/>} />
             <Route path="*" element={<NotFound/>} />

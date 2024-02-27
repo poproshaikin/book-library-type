@@ -6,18 +6,18 @@ import "./BookPage.css"
 import ConnectionHandler from "../Models/ConnectionHandler";
 
 function BookPage({reloadBookPage}:{reloadBookPage: () => void}) {
-    let connHandler = new ConnectionHandler(serverIp, serverPort);
 
+    let connHandler = new ConnectionHandler(serverIp, serverPort);
     const { id } = useParams();
     const [book, setBook] = useState<Book>();
-    const [liked, setLiked] = useState(false);
-    const navigate = useNavigate();
+    const [reloadState, setReloadState] = useState<boolean>(false);
 
     function handleLike() {
         connHandler.like(sessionStorage['jwt'], parseInt(id !== undefined ? id : "-1"))
             .then(response => {
                 if(response === 'Success') {
                     reloadBookPage();
+                    setReloadState(true);
                 }
             });
     }
@@ -27,6 +27,12 @@ function BookPage({reloadBookPage}:{reloadBookPage: () => void}) {
         connHandler.getBookById(parseInt(id !== undefined ? id : "-1"))
             .then(book => setBook(book));
     }, [])
+
+    useEffect(() => {
+        if (reloadState) {
+            setReloadState(false);
+        }
+    }, [reloadState]);
 
     if(book === undefined) {
         return (
@@ -68,12 +74,10 @@ function BookPage({reloadBookPage}:{reloadBookPage: () => void}) {
                             <div className="button-and-text">
                                 <button onClick={handleLike}>👍🏻</button>
                                 <p className="like-p">{book.likes}</p>
-                                <p>{liked}</p>
                             </div>
                             <div className="button-and-text">
                                 <button>👎🏻</button>
                                 <p className="dislike-p">{book.dislikes}</p>
-                                <p></p>
                             </div>
                         </div>
                     </div>
