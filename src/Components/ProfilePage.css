@@ -54,3 +54,13 @@
 .profile-button:active {
     box-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
+.changing-input {
+    margin-top: 10px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 70px;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid black;
+}

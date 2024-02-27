@@ -44,7 +44,7 @@
 .uploaded-by-container {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 75%;
 }
 .user {
     width: 75%;
@@ -81,4 +81,10 @@
 }
 .button-and-text + .button-and-text {
     margin-left: 20px;
+}
+.like-p {
+    color: green;
+}
+.dislike-p {
+    color: red;
 }

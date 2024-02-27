@@ -4,10 +4,12 @@ import {useState} from "react";
 import LoginDTO from "../Models/DTO/LoginDTO";
 import ConnectionHandler from "../Models/ConnectionHandler";
 import {serverIp, serverPort} from "../App";
+import {useNavigate} from "react-router-dom";
 
-function Login() {
+function Login({reloadTopBar}:{reloadTopBar: () => void}) {
 
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     let connHandler = new ConnectionHandler(serverIp, serverPort);
 
@@ -41,7 +43,9 @@ function Login() {
             .then(response => {
                 if(response.split('.').length === 3) {
                     (document.getElementById('inform-p') as HTMLElement).textContent = "Success";
-                    sessionStorage['jwt'] = response;
+                    sessionStorage.setItem('jwt', response)
+                    reloadTopBar();
+                    navigate('/');
                 } else if(response === 'Not found') {
                     (document.getElementById('inform-p') as HTMLElement).textContent = "User not found";
                 } else if(response === 'Unauthorized') {

@@ -1,13 +1,26 @@
 import Book from "../Models/Book";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {serverIp, serverPort} from "../App";
 import "./BookPage.css"
 import ConnectionHandler from "../Models/ConnectionHandler";
 
-function BookPage() {
+function BookPage({reloadBookPage}:{reloadBookPage: () => void}) {
+    let connHandler = new ConnectionHandler(serverIp, serverPort);
+
     const { id } = useParams();
     const [book, setBook] = useState<Book>();
+    const [liked, setLiked] = useState(false);
+    const navigate = useNavigate();
+
+    function handleLike() {
+        connHandler.like(sessionStorage['jwt'], parseInt(id !== undefined ? id : "-1"))
+            .then(response => {
+                if(response === 'Success') {
+                    reloadBookPage();
+                }
+            });
+    }
 
     useEffect(() => {
         let connHandler = new ConnectionHandler(serverIp, serverPort);
@@ -41,26 +54,32 @@ function BookPage() {
                             <h1>Uploaded by </h1>
                         </div>
                         <br/>
+                        <br/>
+                        <br/>
                         <div className="user">
                             <p className="property">
                                 <strong>Name</strong>: {book.uploadedUser.name} {book.uploadedUser.surname}
                             </p>
                             <p className="property"><strong>Username</strong>: {book.uploadedUser.username}</p>
                         </div>
+                        <br/>
+                        <br/>
                         <div className="buttons-container">
                             <div className="button-and-text">
-                                <button>👍🏻</button>
-                                <p>{book.likes}</p>
+                                <button onClick={handleLike}>👍🏻</button>
+                                <p className="like-p">{book.likes}</p>
+                                <p>{liked}</p>
                             </div>
                             <div className="button-and-text">
                                 <button>👎🏻</button>
-                                <p>{book.dislikes}</p>
+                                <p className="dislike-p">{book.dislikes}</p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 

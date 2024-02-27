@@ -1,8 +1,19 @@
 import "./NewBookPage.css"
+import Book from "../Models/Book";
+import {useState} from "react";
+import ConnectionHandler from "../Models/ConnectionHandler";
+import {serverIp, serverPort} from "../App";
+import {useNavigate} from "react-router-dom";
 
 function NewBookPage() {
 
+    const [uploaded, setUploaded] = useState(false);
+    const navigate = useNavigate();
+
     function handleConfirm() {
+
+        let connHandler = new ConnectionHandler(serverIp, serverPort);
+
         const name = (document.getElementById('name-input') as HTMLInputElement).value;
         const description = (document.getElementById('description-input') as HTMLInputElement).value;
         const author = (document.getElementById('author-input') as HTMLInputElement).value;
@@ -20,6 +31,31 @@ function NewBookPage() {
         ) {
             (document.getElementById('inform-p') as HTMLElement).textContent = "Fields cannot be empty";
         }
+
+        let book = new Book();
+        book.name = name;
+        book.description = description;
+        book.authorFullName = author;
+        book.genre = genre;
+        book.pageCount = parseInt(pageCount);
+        book.price = parseInt(price);
+
+        connHandler.addNewBook(book)
+            .then(response => {
+
+                console.log(response);
+
+                if(response === 'Success') {
+                    setUploaded(true);
+                    navigate('/');
+                } else if (response === 'Unauthorized') {
+                    (document.getElementById('inform-p') as HTMLElement).textContent = "Error: Unauthorized. Try to re-login";
+                } else if (response === 'Book uploading blocked') {
+                    (document.getElementById('inform-p') as HTMLElement).textContent = "Book uploading is blocked";
+                } else {
+                    (document.getElementById('inform-p') as HTMLElement).textContent = "Failed to send data";
+                }
+            });
     }
 
     return (

@@ -2,10 +2,12 @@ import "./SignUp.css"
 import ConnectionHandler from "../Models/ConnectionHandler";
 import User from "../Models/User";
 import {serverIp, serverPort} from "../App";
+import {useNavigate} from "react-router-dom";
 
-function SignUp() {
+function SignUp({reloadTopBar}:{reloadTopBar: () => void}) {
 
     let connHandler = new ConnectionHandler(serverIp, serverPort);
+    const navigate = useNavigate();
 
     function handleSignUp() {
         const name = (document.getElementById('name-input') as HTMLInputElement).value;
@@ -50,6 +52,8 @@ function SignUp() {
                 if(jwt.split('.').length === 3) {
                     sessionStorage['jwt'] = jwt;
                     (document.getElementById('inform-p') as HTMLElement).textContent = "Success";
+                    reloadTopBar();
+                    navigate('/');
                 } else if(jwt === "Exists username") {
                     (document.getElementById('inform-p') as HTMLElement).textContent = "This username is claimed";
                 } else if(jwt === "Exists email") {

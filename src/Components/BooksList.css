@@ -7,10 +7,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 30px;
     margin-left: 5px;
     margin-top: 5px;
     transition: background-color 0.2s ease;
+    overflow: hidden; /* Скрытие текста, который не помещается в контейнер */
+    font-size: 22px; /* Начальный размер шрифта */
+    white-space: nowrap; /* Запрет переноса текста */
 }
 .main-container {
     display: flex;

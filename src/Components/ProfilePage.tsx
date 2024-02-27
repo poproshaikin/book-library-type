@@ -27,7 +27,7 @@ function ProfilePage() {
             <div>
                 Failed to load. Try re-authorize
         </div>
-    )
+        )
     }
 
     return (
@@ -51,7 +51,7 @@ function ProfilePage() {
                     <br/>
                 </div>
                 <div className="profile-right-panel">
-                    <button onClick={handleChangeName} className="profile-button">Change name</button>
+                    <button className="profile-button">Change name</button>
                     <br/>
                     <button className="profile-button">Change surname</button>
                     <br/>
@@ -64,44 +64,7 @@ function ProfilePage() {
                 </div>
             </div>
         </div>
-);
-
-    function submitInput(option:string, element:HTMLElement) {
-        let input = (document.getElementById(`${option}-input`) as HTMLInputElement).value;
-
-        connHandler.changeName(input, sessionStorage['jwt'])
-            .then(response => {
-                if(response.split('.').length === 3) {
-                    sessionStorage['jwt'] = response;
-                    setChangedInput(true);
-                }
-            });
-
-        const inputElement = (document.getElementById('changing-input') as HTMLInputElement);
-        const parentNode = inputElement.parentNode;
-        if(parentNode !== null) {
-            parentNode.replaceChild(element, inputElement)
-        }
-    }
-
-    function handleChangeName() {
-        let input = document.createElement('input');
-        let p = (document.getElementById('p-name') as HTMLElement);
-
-        input.id = 'name-input'
-        input.className = 'changing-input';
-
-        const parentNode = input.parentNode;
-        if(parentNode !== null) {
-            parentNode.replaceChild(p, input)
-        }
-
-        input.addEventListener('keydown', function(event) {
-            if(event.keyCode === 13) {
-                submitInput('name', p);
-            }
-        });
-    }
+    );
 }
 
 export default ProfilePage;

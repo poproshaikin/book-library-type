@@ -8,19 +8,30 @@ import {useNavigate} from "react-router-dom";
 function BooksList() {
 
     const navigate = useNavigate();
-    const [books, setBooks] = useState<Book[]>([]);
+    const [books, setBooks] = useState<Book[] | null>(null);
 
     let connHandler = new ConnectionHandler(serverIp, serverPort);
 
     useEffect(() => {
         connHandler.getAllBooks()
-            .then(booksList => setBooks(booksList))
+            .then(booksList => {
+                if(booksList !== null) {
+                    setBooks(booksList)
+                }
+            })
     }, []);
+
+    if(books === null) {
+        return (
+            <div>
+                Failed to load books list...
+            </div>)
+    }
 
     if(books.length === 0) {
         return (
             <div>
-                Loading...
+                Nothing to show...
             </div>
         )
     }

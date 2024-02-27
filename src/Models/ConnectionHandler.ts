@@ -1,5 +1,4 @@
 import Book from "./Book";
-import {serverIp, serverPort} from "../App";
 import User from "./User";
 import CryptoJS from 'crypto-js';
 import LoginDTO from "./DTO/LoginDTO";
@@ -13,7 +12,7 @@ class ConnectionHandler {
         this.ServerPort = serverPort;
     }
 
-    public async getAllBooks() {
+    public async getAllBooks():Promise<Book[] | null> {
         const options = {
             method: 'GET',
             headers: {
@@ -48,13 +47,13 @@ class ConnectionHandler {
 
             return books;
         } catch {
-            return [];
+            return null;
         }
 
     }
 
     public async getBookById(id:number) {
-        const url = `http://${serverIp}:${serverPort}/books/book?id=${id}`;
+        const url = `http://${this.ServerIp}:${this.ServerPort}/books/book?id=${id}`;
         const options = {
             method: 'GET',
             headers: {
@@ -62,14 +61,22 @@ class ConnectionHandler {
             }
         }
 
-        const response = await fetch(url, options);
-        const json = await response.text();
-        let book: Book = JSON.parse(json);
+        let book:Book;
+
+        try {
+            const response = await fetch(url, options);
+            const json = await response.text();
+            book = JSON.parse(json);
+        } catch (e) {
+            console.error(e);
+            book = new Book();
+        }
+
         return book;
     }
 
     public async signupUser(user:User) {
-        const url = `http://${serverIp}:${serverPort}/users/signUp`;
+        const url = `http://${this.ServerIp}:${this.ServerPort}/users/signUp`;
         const options = {
             method: 'POST',
             headers: {
@@ -116,7 +123,7 @@ class ConnectionHandler {
     }
 
     public async getUserByToken(token:string) {
-        const url = `http://${serverIp}:${serverPort}/users/userByToken`;
+        const url = `http://${this.ServerIp}:${this.ServerPort}/users/userByToken`;
         const options = {
             method: 'POST',
             headers: {
@@ -136,7 +143,7 @@ class ConnectionHandler {
     }
 
     public async addNewBook(book:Book) {
-        const url=`http:${this.ServerIp}:${this.ServerPort}/books/addNewBook`;
+        const url=`http://${this.ServerIp}:${this.ServerPort}/books/addNewBook`;
         const options = {
             method: 'POST',
             headers: {
@@ -156,6 +163,68 @@ class ConnectionHandler {
         }
 
         return responseText;
+    }
+
+    public async like(token:string, bookId:number) {
+
+        if(bookId === -1) {
+            return 'Failed';
+        }
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${token}`
+            }
+        };
+        const url = `http://${this.ServerIp}:${this.ServerPort}/likes/like?bookId=${bookId}`
+
+        try {
+            const response = await fetch(url, options);
+            return await response.text();
+        } catch {
+            return 'Failed';
+        }
+    }
+
+    public async changeName(name:string, token:string) {
+        const url = `http://${this.ServerIp}:${this.ServerPort}/users/changeName`;
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${token}`
+            },
+            body: JSON.stringify(name)
+        }
+
+        let responseText;
+
+        try {
+            const response = await fetch(url, options);
+            responseText = await response.text();
+        } catch {
+            responseText = 'Failed'
+        }
+
+        return responseText;
+    }
+
+    public async changeSurname(surname:string, token:string) {
+
+    }
+
+    public async changeUsername(username:string, token:string) {
+
+    }
+
+    public async changeEmail(email:string, token:string) {
+
+    }
+
+    public async changePassword(password:string, token:string) {
+
     }
 
     public static sha256(input:string) {

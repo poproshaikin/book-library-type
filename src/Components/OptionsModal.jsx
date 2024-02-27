@@ -1,6 +1,14 @@
 import "./OptionsModal.css"
+import {useNavigate} from "react-router-dom";
 
 function OptionsModal({showModal, onClose}) {
+
+    const navigate = useNavigate();
+
+    function handleSignOut() {
+        sessionStorage.removeItem('jwt');
+        onClose();
+    }
 
     return (
         <>
@@ -14,7 +22,7 @@ function OptionsModal({showModal, onClose}) {
                         <div className="modal-links-container">
                             <a href="/profile">· Profile</a>
                             <a href="/newBook">· Add book</a>
-                            <a>· Sign out</a>
+                            <a onClick={handleSignOut} href='/'>· Sign out</a>
                         </div>
 
                         {/*<button onClick={onClose}>Close</button>*/}
