@@ -24,8 +24,6 @@ function OptionsModal({showModal, onClose}) {
                             <a href="/newBook">· Add book</a>
                             <a onClick={handleSignOut} href='/'>· Sign out</a>
                         </div>
-
-                        {/*<button onClick={onClose}>Close</button>*/}
                     </div>
                 </div>
             )}

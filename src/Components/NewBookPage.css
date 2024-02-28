@@ -1,5 +1,5 @@
 .nb-title-container {
-    height: 100px;
+    height: 15vmin;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -13,20 +13,20 @@
 }
 .nb-left-panel {
     width: 50%;
-    padding-left: 30px;
+    padding-left: 4vmin;
 }
 .nb-key {
-    font-size: 20px;
+    font-size: 4vmin;
     border-bottom: 1px solid black;
     width: max-content;
 }
 .nb-input {
-    margin-top: 10px;
-    font-size: 30px;
+    margin-top: 1.2vmin;
+    font-size: 4.5vmin;
     font-style: italic;
     font-weight: bold;
     font-family: Raleway;
-    margin-left: 70px;
+    margin-left: 12vmin;
     border: none;
     outline: none;
     border-bottom: 1px solid black;
@@ -48,17 +48,17 @@
     align-items: end;
 }
 .nb-button-and-text-container {
-    padding-right: 30px;
-    padding-bottom: 30px;
+    padding-right: 4vmin;
+    padding-bottom: 4vmin;
 }
 .nb-button-and-text-container button {
-    height: 60px;
-    width: 350px;
-    font-size: 25px;
+    height: 10vmin;
+    width: 48vmin;
+    font-size: 3vmin;
     font-family: Raleway;
     background-color: white;
     border: rgb(220, 220, 220) 1px solid;
-    border-radius: 5px;
+    border-radius: 0.6vh;
     box-shadow: 0 2px 2px rgba(0,0,0,0.3);
     transition: color, background-color 0.2s ease;
 }

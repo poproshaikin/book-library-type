@@ -51,16 +51,21 @@ function ProfilePage() {
                     <br/>
                 </div>
                 <div className="profile-right-panel">
-                    <button className="profile-button">Change name</button>
-                    <br/>
-                    <button className="profile-button">Change surname</button>
-                    <br/>
-                    <button className="profile-button">Change username</button>
-                    <br/>
-                    <button className="profile-button">Change email</button>
-                    <br/>
-                    <button className="profile-button">Change password</button>
-                    <br/>
+                    <div className="rp-button-container">
+                        <button className="profile-button">Change name</button>
+                    </div>
+                    <div className="rp-button-container">
+                        <button className="profile-button">Change surname</button>
+                    </div>
+                    <div className="rp-button-container">
+                        <button className="profile-button">Change username</button>
+                    </div>
+                    <div className="rp-button-container">
+                        <button className="profile-button">Change email</button>
+                    </div>
+                    <div className="rp-button-container">
+                        <button className="profile-button">Change password</button>
+                    </div>
                 </div>
             </div>
         </div>

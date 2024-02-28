@@ -3,14 +3,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 2.5vmin;
 }
 .input-with-button input[type="password"],
 .input-with-button input[type="text"] {
-    margin-left: 10px;
+    margin-left: 1.25vmin;
 }
 .show-password-checkbox {
-    border-radius: 5px;
+    border-radius: 0.75vmin;
 }
 .show-password-checkbox:hover {
     background-color: black ;

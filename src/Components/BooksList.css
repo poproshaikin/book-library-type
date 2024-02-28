@@ -1,23 +1,23 @@
 .book-item {
-    border: 3px solid black;
-    border-radius: 5px;
-    height: 200px;
-    width: 200px;
+    border: 0.45vmin solid black;
+    border-radius: 1vmin;
+    height: 28vmin;
+    width: 28vmin;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-left: 5px;
-    margin-top: 5px;
+    margin-left: 1vmin;
+    margin-top: 1vmin;
     transition: background-color 0.2s ease;
     overflow: hidden; /* Скрытие текста, который не помещается в контейнер */
-    font-size: 22px; /* Начальный размер шрифта */
+    font-size: 3.3vmin; /* Начальный размер шрифта */
     white-space: nowrap; /* Запрет переноса текста */
 }
 .main-container {
     display: flex;
     flex-wrap: wrap;
-    width:100%;
+    width: 100%;
     height: auto;
 }
 .book-item:hover {

@@ -9,7 +9,7 @@ import ProfilePage from "./Components/ProfilePage";
 import NewBookPage from "./Components/NewBookPage";
 import NotFound from "./Components/NotFound";
 
-const serverIp: string = '10.0.1.126';
+const serverIp: string = '10.0.0.24';
 const serverPort: number = 5238;
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login reloadTopBar={reload}/>} />
             <Route path="/signup" element={<SignUp reloadTopBar={reload}/>} />
-            <Route path="/book/:id" element={<BookPage reloadBookPage={reload}/> } />
+            <Route path="/book/:id" element={<BookPage/> } />
             <Route path="/profile" element={<ProfilePage/>} />
             <Route path="/newBook" element={<NewBookPage/>} />
             <Route path="*" element={<NotFound/>} />

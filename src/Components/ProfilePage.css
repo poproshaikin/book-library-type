@@ -1,6 +1,6 @@
 .profile-title-container {
     width: 100%;
-    height: 100px;
+    height: 14vmin;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,38 +13,38 @@
 }
 .profile-left-panel {
     width: 50%;
-    padding-left: 30px;
+    padding-left: 4vmin;
 }
 .profile-right-panel {
     width: 50%;
-    padding-right: 30px;
+    padding-right: 4vmin;
     display: flex;
     align-items: end;
     flex-direction: column;
 }
 .profile-key {
-    font-size: 20px;
+    font-size: 3vmin;
     border-bottom: 1px solid black;
     width: max-content;
 }
 .profile-value {
-    margin-top: 10px;
-    font-size: 30px;
+    margin-top: 1.2vmin;
+    font-size: 4vmin;
     font-style: italic;
     font-weight: bold;
-    margin-left: 70px;
+    margin-left: 8vmin;
 }
 .profile-button {
-    height: 75px;
-    width: 300px;
+    height: 10vmin;
+    width: 42vmin;
     border: rgb(220, 220, 220) 2px solid;
-    border-radius: 5px;
+    border-radius: 0.7vmin;
     background-color: white;
     transition: border, background-color 0.2s ease;
     color: black;
-    font-size: 20px;
+    font-size: 2.8vmin;
     font-family: Raleway;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
 }
 .profile-button:hover {
     background-color: lightslategray;
@@ -52,14 +52,14 @@
     color: white;
 }
 .profile-button:active {
-    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    box-shadow: 0 0 0 0;
 }
 .changing-input {
-    margin-top: 10px;
-    font-size: 30px;
+    margin-top: 1vmin;
+    font-size: 4vmin;
     font-style: italic;
     font-weight: bold;
-    margin-left: 70px;
+    margin-left: 8vmin;
     outline: none;
     border: 0;
     border-bottom: 1px solid black;

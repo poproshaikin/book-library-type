@@ -1,16 +1,15 @@
 .nav-menu {
     background-color: lightslategray;
-
     display: flex;
     flex-direction: row;
-    height: 70px;
+    height: 9.5vmin;
 }
 .nav-title-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height:inherit;
-    width: 400px;
+    width: 45vmin;
 }
 .nav-title-container h1 {
     color: white;
@@ -23,13 +22,13 @@
     justify-content: space-between;
     height:inherit;
     align-items: center;
-    width: 350px;
-    margin-left: 500px;
+    width: 55vmin;
+    margin-left: 65vmin;
 }
 .nav-constant-buttons p {
     color: white;
-    font-size: 28px;
-    width: 120px;
+    font-size: 3.8vmin;
+    width: 16vmin;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,13 +41,13 @@
     font-weight: bold;
 }
 .nav-optional-buttons {
-    width: 245px;
+    width: 35vmin;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .profile-logo {
-    height: 30px;
+    height: 4vmin;
 }
 .profile-logo:hover {
     cursor: pointer;

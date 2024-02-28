@@ -188,6 +188,28 @@ class ConnectionHandler {
         }
     }
 
+    public async dislike(token:string, bookId:number) {
+        if(bookId === -1) {
+            return 'Failed';
+        }
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${token}`
+            }
+        };
+        const url = `http://${this.ServerIp}:${this.ServerPort}/likes/dislike?bookId=${bookId}`
+
+        try {
+            const response = await fetch(url, options);
+            return await response.text();
+        } catch {
+            return 'Failed';
+        }
+    }
+
     public async changeName(name:string, token:string) {
         const url = `http://${this.ServerIp}:${this.ServerPort}/users/changeName`;
         const options = {

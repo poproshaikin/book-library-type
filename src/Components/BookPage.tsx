@@ -5,34 +5,42 @@ import {serverIp, serverPort} from "../App";
 import "./BookPage.css"
 import ConnectionHandler from "../Models/ConnectionHandler";
 
-function BookPage({reloadBookPage}:{reloadBookPage: () => void}) {
+function BookPage() {
 
     let connHandler = new ConnectionHandler(serverIp, serverPort);
     const { id } = useParams();
     const [book, setBook] = useState<Book>();
-    const [reloadState, setReloadState] = useState<boolean>(false);
 
     function handleLike() {
         connHandler.like(sessionStorage['jwt'], parseInt(id !== undefined ? id : "-1"))
             .then(response => {
                 if(response === 'Success') {
-                    reloadBookPage();
-                    setReloadState(true);
+                    connHandler.getBookById(parseInt(id !== undefined ? id : "-1"))
+                        .then(response => {
+                            setBook(response);
+                        })
                 }
             });
     }
 
-    useEffect(() => {
-        let connHandler = new ConnectionHandler(serverIp, serverPort);
-        connHandler.getBookById(parseInt(id !== undefined ? id : "-1"))
-            .then(book => setBook(book));
-    }, [])
+    function handleDislike() {
+        connHandler.dislike(sessionStorage['jwt'], parseInt(id !== undefined ? id : "-1"))
+            .then(response => {
+                if(response === 'Success') {
+                    connHandler.getBookById(parseInt(id !== undefined ? id : "-1"))
+                        .then(response => {
+                            setBook(response);
+                        })
+                }
+            })
+    }
 
     useEffect(() => {
-        if (reloadState) {
-            setReloadState(false);
-        }
-    }, [reloadState]);
+        connHandler.getBookById(parseInt(id !== undefined ? id : "-1"))
+            .then(response => {
+                setBook(response);
+            })
+    }, [])
 
     if(book === undefined) {
         return (
@@ -72,11 +80,11 @@ function BookPage({reloadBookPage}:{reloadBookPage: () => void}) {
                         <br/>
                         <div className="buttons-container">
                             <div className="button-and-text">
-                                <button onClick={handleLike}>👍🏻</button>
+                                <button disabled={sessionStorage['jwt'] === undefined} onClick={handleLike}>👍🏻</button>
                                 <p className="like-p">{book.likes}</p>
                             </div>
                             <div className="button-and-text">
-                                <button>👎🏻</button>
+                                <button disabled={sessionStorage['jwt'] === undefined} onClick={handleDislike}>👎🏻</button>
                                 <p className="dislike-p">{book.dislikes}</p>
                             </div>
                         </div>

@@ -3,16 +3,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height:500px;
+    height:50vh;
 }
 .title-row {
-    height: 200px;
+    height: 30vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 4.5vh;
 }
 .book-container {
     width: 100%;
@@ -23,23 +23,23 @@
 .left-panel {
     width: 50%;
     text-align: justify;
-    padding-left: 25px;
+    padding-left: 4vh;
 }
 .description {
     width: 50%;
-    font-size: 24px;
+    font-size: 4vh;
 }
 .property {
     width: 50%;
     height: auto;
-    font-size: 24px;
+    font-size: 3.45vh;
 }
 .right-panel {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: end;
-    padding-right: 25px;
+    padding-right: 4vh;
 }
 .uploaded-by-container {
     display: flex;
@@ -47,7 +47,7 @@
     width: 75%;
 }
 .user {
-    width: 75%;
+    width: 80%;
     display: flex;
     justify-content: start;
     flex-direction: column;
@@ -59,19 +59,19 @@
     width: 75%;
 }
 .buttons-container button {
-    height: 50px;
-    width: 50px;
+    height: 5.5vh;
+    width: 5.5vh;
     border: 0;
     background-color: white;
-    font-size: 28px;
+    font-size: 4vh;
 }
 .buttons-container button:hover {
     background-color: white;
     border: 0;
-    font-size:30px;
+    font-size: 4.25vh;
 }
 .buttons-container button:active {
-    font-size: 28px;
+    font-size: 4vh;
 }
 .button-and-text {
     display: flex;
@@ -80,7 +80,7 @@
     flex-direction: column;
 }
 .button-and-text + .button-and-text {
-    margin-left: 20px;
+    margin-left: 2.3vh;
 }
 .like-p {
     color: green;
